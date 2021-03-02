@@ -1,0 +1,15 @@
+---
+spec:
+  ratelimit:
+    descriptors:
+      - key: generic_key
+        value: rlimit
+        rateLimit:
+          requestsPerUnit: 2
+          unit: MINUTE  
+  ratelimitServer:
+    ratelimitServerRef:
+      name: ratelimit-upstream
+      namespace: ratelimit
+    requestTimeout: 5000ms
+

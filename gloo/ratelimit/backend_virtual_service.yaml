@@ -1,0 +1,24 @@
+apiVersion: gateway.solo.io/v1
+kind: VirtualService
+metadata:
+  name: backend-vs
+  namespace: backend
+spec:
+  virtualHost:
+    domains:
+    - '*'
+    routes:
+      - matchers:
+        - prefix: /
+        options:
+          ratelimit:
+            rateLimits:
+              - actions:
+                  - genericKey:
+                      descriptorValue: rlimit
+        routeAction:
+          single:
+            upstream:
+              name: backend-upstream
+              namespace: backend
+

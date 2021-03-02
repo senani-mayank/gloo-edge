@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: backend
+  labels:
+    component: backend
+    project: demo
+    version: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: backend
+      project: demo
+      version: default
+  template:
+    metadata:
+      labels:
+        component: backend
+        project: demo
+        version: default
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+

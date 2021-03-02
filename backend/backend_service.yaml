@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: backend
+  labels:
+    component: backend-service
+    project: demo
+spec:
+  selector:
+    component: backend
+    project: demo
+  ports:
+    - protocol: TCP
+      port: 8899
+      targetPort: 80

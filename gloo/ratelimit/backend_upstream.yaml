@@ -1,0 +1,14 @@
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  name: backend-upstream
+  namespace: backend
+spec:
+  kube:
+    selector:
+      project: demo
+    serviceName: backend-service
+    serviceNamespace: backend
+    servicePort: 8899
+
+
